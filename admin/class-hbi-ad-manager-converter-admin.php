@@ -110,7 +110,7 @@ class HBI_Ad_Manager_Converter_Admin {
     
     function process_acm_ad_conversion() {
         if ( ! isset( $_POST['security'] ) || ! wp_verify_nonce( $_POST['security'], 'process_acm_ad_conversion' ) )
-            die();
+            wp_die();
         
         global $wpdb;
         
@@ -166,6 +166,6 @@ class HBI_Ad_Manager_Converter_Admin {
         // Update the widgets to the new widget
         $wpdb->query( "UPDATE $wpdb->options SET option_name = 'widget_dfp_ad_unit' WHERE option_name = 'widget_acm_ad_zones';");
 
-        die( 'Successfully converted from ACM Mods to HBI Ad Manager' );
+        wp_die( 'Successfully converted from ACM Mods to HBI Ad Manager' );
     }
 }
